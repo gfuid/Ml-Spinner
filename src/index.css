@@ -397,4 +397,31 @@ a, button, input, textarea, select, [role="button"] {
 .hide-scrollbar::-webkit-scrollbar { display: none; }
 .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* ─── Textile Loader Animations ─── */
+@keyframes dash-scroll {
+  to {
+    stroke-dashoffset: -20;
+  }
+}
+.animate-dash-scroll {
+  animation: dash-scroll 1s linear infinite;
+}
+
+@keyframes thread-wiggle {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(1.5px); }
+}
+.animate-thread-wiggle {
+  animation: thread-wiggle 0.08s linear infinite;
+}
+
+@keyframes spin-yarn {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-yarn {
+  animation: spin-yarn 0.5s linear infinite;
+}
+
+
 

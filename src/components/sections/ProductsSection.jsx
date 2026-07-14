@@ -1,0 +1,88 @@
+import React from 'react'
+import { motion } from 'framer-motion'
+import { ArrowRight } from 'lucide-react'
+
+const PRODUCTS = [
+  { tag: 'Fine Knit', title: 'Ultra-Fine Merino Blend', desc: 'Blended with elastic fibers for exceptional thermal properties and buttery-smooth handle.', count: '120s', strength: '98%', hairiness: '0.82 cN' },
+  { tag: 'Premium Shirting', title: 'Egyptian Giza Cotton', desc: 'Triple-carded ultra-long staple Giza fibers for impeccable surface finish and drape.', count: '100s', strength: '95%', hairiness: '0.91 cN' },
+  { tag: 'Haute Couture', title: 'Silk-Yarn Hybrid', desc: 'Natural silk filaments woven with cotton for luminous sheen and structural bounce.', count: '140s', strength: '92%', hairiness: '0.65 cN' },
+]
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+}
+const stagger = {
+  visible: { transition: { staggerChildren: 0.12 } }
+}
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+}
+
+export default function ProductsSection() {
+  return (
+    <section className="min-h-screen w-full flex items-center justify-center relative bg-white py-16" id="products">
+      <div className="container-editorial w-full px-4 md:px-8">
+        
+        {/* Title Block */}
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
+          <div className="text-left">
+            <span className="text-[13px] text-coral font-semibold tracking-[0.15em] uppercase block mb-3">Products</span>
+            <h2 className="text-[clamp(32px,3.5vw,52px)] font-semibold leading-[1.1] tracking-[-0.02em] text-heading max-w-xl">
+              Premium yarn assemblies for the world's finest fabrics.
+            </h2>
+          </div>
+          <p className="text-base text-text max-w-md leading-relaxed text-left">
+            Each product is engineered for optimal texture, elasticity, and weave compatibility. We select raw inputs rigorously to meet custom specification tolerances.
+          </p>
+        </div>
+
+        {/* Product Cards Grid */}
+        <motion.div 
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.15 }}
+          variants={stagger} 
+          className="grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {PRODUCTS.map((p, i) => (
+            <motion.div
+              key={i}
+              variants={scaleIn}
+              whileHover={{ y: -10, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
+              className="group bg-white border border-border rounded-2xl p-8 hover:shadow-float transition-all duration-500 text-left"
+              data-hover
+            >
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-cream text-[11px] font-semibold text-navy tracking-wide uppercase">
+                {p.tag}
+              </span>
+              <h3 className="text-xl font-semibold text-heading mt-5 tracking-tight">{p.title}</h3>
+              <p className="text-[14px] text-text mt-3 leading-relaxed min-h-[72px]">
+                {p.desc}
+              </p>
+              
+              <div className="mt-8 pt-6 border-t border-border space-y-3">
+                {[
+                  ['Yarn Count', p.count], 
+                  ['Tensile Strength', p.strength], 
+                  ['Hairiness Index', p.hairiness]
+                ].map(([l, v]) => (
+                  <div key={l} className="flex justify-between items-center text-[13px]">
+                    <span className="text-muted">{l}</span>
+                    <span className="text-heading font-semibold">{v}</span>
+                  </div>
+                ))}
+              </div>
+              
+              <div className="flex items-center gap-1.5 mt-6 text-[13px] text-coral font-medium opacity-0 group-hover:opacity-100 transition-all duration-300">
+                View specifications <ArrowRight className="w-3.5 h-3.5" />
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+      </div>
+    </section>
+  )
+}
