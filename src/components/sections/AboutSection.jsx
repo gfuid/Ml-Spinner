@@ -7,10 +7,6 @@ import cottonPolyesterBlendImg from '../../assets/About/Cotton - Polyestor Blend
 import polyesterRegeneratedImg from '../../assets/About/Polyester Regenerated Yarn.png'
 import customOnDemandImg from '../../assets/About/Custom On Demand Blends.png'
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
-}
 const stagger = {
   visible: { transition: { staggerChildren: 0.12 } }
 }
@@ -30,20 +26,20 @@ const scaleIn = {
 const SOLUTIONS = [
   {
     num: '01',
-    title: 'Cotton - Polyestor Blend Yarns',
-    desc: 'Single and Multi Ply Yarns with strengths upto 1300 CSP.',
+    title: 'Ring Spun Yarns',
+    desc: 'Single and Multi Ply Ring Spun Yarns spun on high-speed modern frames.',
     img: cottonPolyesterBlendImg
   },
   {
     num: '02',
-    title: 'Polyester Regenerated Yarn',
-    desc: 'Single and Multi Ply Yarns with strengths upto 2400 CSP.',
+    title: 'Open End (OE) Yarns',
+    desc: 'Uniform carded Open End yarns designed for durability and denim/heavy knitting.',
     img: polyesterRegeneratedImg
   },
   {
     num: '03',
-    title: 'Custom On Demand Blends',
-    desc: 'Customer Specific Counts, Range and Strengths.',
+    title: 'Custom Blend Yarns',
+    desc: 'Customer-specific blend ratios, count ranges, and tensile strengths.',
     img: customOnDemandImg
   }
 ]
@@ -78,7 +74,7 @@ export default function AboutSection() {
                 <motion.div style={{ y: imageY }} className="h-full w-full">
                   <img 
                     src="/about.png" 
-                    alt="M.L. Spinners premium factory tour view" 
+                    alt="ML Overseas premium factory tour view" 
                     loading="lazy"
                     className="w-full h-[120%] object-cover absolute -top-[10%]" 
                   />
@@ -90,9 +86,9 @@ export default function AboutSection() {
                 variants={slideLeft}
                 className="absolute -bottom-6 right-4 lg:right-8 glass-strong rounded-2xl shadow-float p-6 max-w-[240px]"
               >
-                <div className="text-2xl md:text-3xl font-semibold text-heading tracking-tight">1996</div>
+                <div className="text-2xl md:text-3xl font-semibold text-heading tracking-tight">2022</div>
                 <div className="text-[12px] text-text mt-1 font-semibold leading-normal">
-                  Delivering cutting-edge yarn solutions globally for 30 years
+                  Delivering cutting-edge yarn solutions globally since 2022
                 </div>
               </motion.div>
             </motion.div>
@@ -116,13 +112,13 @@ export default function AboutSection() {
               
               <div className="space-y-4 text-base text-text leading-relaxed font-medium">
                 <p className="text-[18px] text-heading font-semibold leading-relaxed">
-                  We’re in the business since 1996 providing cutting edge solutions.
+                  We’re in the business since 2022 providing cutting edge solutions.
                 </p>
                 <p>
-                  M.L Spinners Pvt Ltd is leading Manufacturer of High Tenacity (HT) Industrial Yarns, based near capital of India, New Delhi. M.L Spinners Pvt Ltd is the first of its kind to produce superior quality High Tenacity industrial yarns using the latest European technology and machinery.
+                  ML Overseas is a leading manufacturer of premium Ring Spun and OE Yarns, based near the capital of India, New Delhi. ML Overseas utilizes advanced technology and modern machinery to produce superior quality cotton and blended yarns.
                 </p>
                 <p>
-                  With the ability and capacity to produce and deliver large quantities of excellent high tenacity industrial yarns, we are equipped to cater to multiple requirements of both international and domestic clients with ease, competence and efficiency.
+                  With the ability and capacity to produce and deliver large quantities of excellent yarns, we are equipped to cater to multiple requirements of both international and domestic clients with ease, competence and efficiency.
                 </p>
               </div>
 

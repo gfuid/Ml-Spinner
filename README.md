@@ -30,25 +30,25 @@ If you are developing a production application, we recommend using TypeScript wi
 
 Get informed
 WHO ARE WE
-We’re in the business since 1996 providing cutting edge solutions.
-M.L Spinners Pvt Ltd is leading Manufacturer of High Tenacity (HT) Industrial Yarns, based near capital of India, New Delhi. M.L Spinners Pvt Ltd is the first of its kind to produce superior quality High Tenacity industrial yarns using the latest European technology and machinery. With the ability and capacity to produce and deliver large quantities of excellent high tenacity industrial yarns, we are equipped to cater to multiple requirements of both international and domestic clients with ease, competence and efficiency.
+We’re in the business since 2022 providing cutting edge solutions.
+ML Overseas Pvt. Ltd. is a leading global trade and export enterprise based near the capital of India, New Delhi. We specialize in sourcing and delivering premium textile yarns, eco-friendly fabrics, and industrial raw materials using state-of-the-art international supply chains. With the capability to source and deliver large volumes of premium textiles and commodities, we cater to the diverse requirements of international clients with efficiency, speed, and strict compliance.
 
 Consistent Quality
 Customer Driven Solutions at Competitive Costs.
-High Technical Standards Equipped with In-House Testing Labs
+High Technical Standards Equipped with Global Quality Labs
 
 
 We Provide Top Solutions
 From Every Angle.
 
-Cotton - Polyestor Blend Yarns
-Single and Multi Ply Yarns with strengths upto 1300 CSP.
+Premium Yarns & Fibers
+High-tenacity organic, combed, carded, and synthetic yarns sourced for global markets.
 01
 
-Polyester Regenerated Yarn
-Single and Multi Ply Yarns with strengths upto 2400 CSP.
+Eco-Friendly Fabrics
+Sustainable, recycled polyester, and organic cotton fabrics meeting international standards.
 02
 
-Custom On Demand Blends
-Customer Specific Counts, Range and Strengths.
+Custom Global Sourcing
+Client-specific counts, weaves, materials, and end-to-end logistics solutions.
 03

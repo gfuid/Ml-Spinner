@@ -73,7 +73,7 @@ export default function CTASection() {
                   ADDRESS
                 </span>
                 <p className="text-[14px] text-heading font-semibold leading-relaxed">
-                  Opp. Mini Secretariat, Vill-Nagar, Gohana, Sonepat, Haryana-131301, India
+                  Khevat no. 251, Khatoni no. 275, Balana Road, VPO Naultha, Panipat - 132145, Haryana, India
                 </p>
               </div>
             </motion.div>
@@ -93,10 +93,10 @@ export default function CTASection() {
                   CONTACT NUMBER
                 </span>
                 <a 
-                  href="tel:+918168680884" 
+                  href="tel:+917422030303" 
                   className="text-[15px] md:text-[16px] text-heading font-bold hover:text-coral transition-colors"
                 >
-                  +91-8168680884
+                  +91-7422 030303
                 </a>
               </div>
             </motion.div>
@@ -115,12 +115,20 @@ export default function CTASection() {
                 <span className="text-[10px] font-bold text-[#FF6B5A] tracking-widest uppercase block mb-1">
                   EMAIL
                 </span>
-                <a 
-                  href="mailto:mlspinnerspvtltd@gmail.com" 
-                  className="text-[15px] md:text-[16px] text-heading font-bold hover:text-coral transition-colors break-all"
-                >
-                  mlspinnerspvtltd@gmail.com
-                </a>
+                <div className="flex flex-col gap-1">
+                  <a 
+                    href="mailto:office@mloverseas.com" 
+                    className="text-[15px] md:text-[16px] text-heading font-bold hover:text-coral transition-colors break-all"
+                  >
+                    office@mloverseas.com
+                  </a>
+                  <a 
+                    href="mailto:Mloverseasoffice@gmail.com" 
+                    className="text-[13px] text-muted hover:text-coral transition-colors break-all"
+                  >
+                    Mloverseasoffice@gmail.com
+                  </a>
+                </div>
               </div>
             </motion.div>
           </motion.div>

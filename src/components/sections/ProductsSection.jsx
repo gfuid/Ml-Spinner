@@ -3,15 +3,11 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 const PRODUCTS = [
-  { tag: 'Fine Knit', title: 'Ultra-Fine Merino Blend', desc: 'Blended with elastic fibers for exceptional thermal properties and buttery-smooth handle.', count: '120s', strength: '98%', hairiness: '0.82 cN' },
-  { tag: 'Premium Shirting', title: 'Egyptian Giza Cotton', desc: 'Triple-carded ultra-long staple Giza fibers for impeccable surface finish and drape.', count: '100s', strength: '95%', hairiness: '0.91 cN' },
-  { tag: 'Haute Couture', title: 'Silk-Yarn Hybrid', desc: 'Natural silk filaments woven with cotton for luminous sheen and structural bounce.', count: '140s', strength: '92%', hairiness: '0.65 cN' },
+  { tag: 'Ring Spun', title: '100% Combed Cotton Yarn', desc: 'Premium long-staple combed cotton spun on ring frames for maximum tensile strength, softness, and durability.', count: 'Ne 16s - 40s', strength: '2400+ CSP', hairiness: 'Low Hairiness' },
+  { tag: 'Open End', title: 'OE Cotton & Blended Yarn', desc: 'Highly uniform Open End yarns spun for optimal bulkiness and absorption, perfect for denim and heavy knits.', count: 'Ne 10s - 24s', strength: '1600+ CSP', hairiness: 'Standard' },
+  { tag: 'Custom Blend', title: 'Polyester-Cotton Blends', desc: 'Engineered blends combining cotton comfort with polyester strength, tailored to client specification ratios.', count: 'Ne 12s - 30s', strength: '1900+ CSP', hairiness: 'Low-to-Mid' },
 ]
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
-}
 const stagger = {
   visible: { transition: { staggerChildren: 0.12 } }
 }

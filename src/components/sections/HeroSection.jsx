@@ -36,7 +36,7 @@ const stagger = {
 }
 
 export default function HeroSection({ loading }) {
-  const years = useCounter(30, 2000)
+  const years = useCounter(4, 2000)
   const countries = useCounter(42, 2500)
   const purity = useCounter(99, 2000)
 
@@ -63,11 +63,11 @@ export default function HeroSection({ loading }) {
             <motion.h1 variants={fadeUp} className="text-[clamp(38px,5vw,72px)] font-semibold leading-[1.08] tracking-[-0.03em] text-heading">
               Crafting the world's
               <span className="text-coral"> finest yarn</span>,
-              since 1993.
+              since 2022.
             </motion.h1>
 
             <motion.p variants={fadeUp} className="text-base md:text-lg text-text leading-relaxed max-w-md">
-              Three decades of precision spinning, sustainable sourcing, and relentless quality — delivering premium yarn to luxury fashion houses in 42 countries.
+              Dedicated to precision spinning, premium Ring Spun and OE yarns, and relentless quality — delivering to luxury fashion networks in 42 countries.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 pt-2">

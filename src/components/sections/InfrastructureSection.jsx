@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Sliders, CheckCircle } from 'lucide-react'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },

@@ -84,7 +84,7 @@ export default function ClientsSection() {
 
         {/* Supporting statement */}
         <div className="text-[12px] text-muted tracking-widest uppercase font-medium">
-          Spinning Ne 16s to Ne 120s combed and carded yarns
+          Manufacturing Premium Ring Spun and Open End (OE) Yarns
         </div>
       </div>
     </section>

@@ -41,13 +41,13 @@ export default function Navbar() {
         
         {/* Left Side: Brand Logo box & Title */}
         <Link to="/" className="flex items-center gap-3 group" data-hover>
-          <img src={logoImg} alt="ML Spinners logo" className="w-9 h-9 object-contain flex-shrink-0" />
+          <img src={logoImg} alt="ML Overseas logo" className="w-9 h-9 object-contain flex-shrink-0" />
           <div className="hidden sm:block text-left">
             <div className="text-heading font-bold text-[15px] tracking-tight leading-none">
-              ML Spinners
+              ML Overseas
             </div>
             <div className="text-muted text-[9px] tracking-wider uppercase font-semibold mt-1">
-              Since 1996
+              Since 2022
             </div>
           </div>
         </Link>

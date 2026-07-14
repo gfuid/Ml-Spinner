@@ -27,20 +27,20 @@ function RouteMetadataManager() {
   useEffect(() => {
     switch (location.pathname) {
       case '/':
-        document.title = "ML Spinners Pvt. Ltd. — High Tenacity Industrial Yarns"
-        updateMetaDescription("ML Spinners Pvt. Ltd. is a leading manufacturer of premium High Tenacity industrial yarns since 1996. Equipped with advanced European machinery to deliver superior carded and combed yarns globally.")
+        document.title = "ML Overseas — Premium Ring Spun & OE Yarns"
+        updateMetaDescription("ML Overseas is a leading manufacturer of premium Ring Spun and OE Yarns since 2022. Equipped with advanced technology to deliver superior combed and carded yarns globally.")
         break
       case '/about-us':
-        document.title = "About Us — ML Spinners Pvt. Ltd. | Spinning Since 1996"
-        updateMetaDescription("Get informed about ML Spinners Pvt. Ltd., leading manufacturer of High Tenacity industrial yarns. Discover our European machinery, ISO standards, and custom solution testing labs.")
+        document.title = "About Us — ML Overseas | Spun Since 2022"
+        updateMetaDescription("Get informed about ML Overseas, leading manufacturer of Ring Spun and Open End (OE) yarns. Discover our manufacturing facility, standards, and testing labs.")
         break
       case '/applications':
-        document.title = "Yarn Applications & Products — ML Spinners Pvt. Ltd."
-        updateMetaDescription("Explore our precision yarn products, cotton-polyester blends, and industrial end-use applications including socks, towels, ropes, carpets, and geo-textiles.")
+        document.title = "Yarn Applications & Products — ML Overseas"
+        updateMetaDescription("Explore our precision Ring Spun and Open End yarn products, custom blends, and end-use applications.")
         break
       case '/contact-us':
-        document.title = "Contact Us — ML Spinners Pvt. Ltd. | Customer Support"
-        updateMetaDescription("Need customer support? Feel free to contact ML Spinners on our email mlspinnerspvtltd@gmail.com, phone +91-8168680884, or visit our Mini Secretariat office in Gohana.")
+        document.title = "Contact Us — ML Overseas | Yarn Sourcing Support"
+        updateMetaDescription("Need support? Contact ML Overseas via email Mloverseasoffice@gmail.com or office@mloverseas.com, call +91-7422030303, or visit our office at Balana Road, Panipat.")
         break
       default:
         break
@@ -64,12 +64,12 @@ function updateMetaDescription(content) {
 const LOADER_STEPS = [
   { threshold: 12, label: "Selecting premium organic cotton fibers...", icon: "🌿" },
   { threshold: 25, label: "Carding fibers into thin aligned webs...", icon: "✨" },
-  { threshold: 38, label: "Drawing and blending slivers for density...", icon: "📐" },
-  { threshold: 50, label: "Feeding slivers to drafting system...", icon: "⚙️" },
-  { threshold: 65, label: "Ring spinning: Twisting at 14,800 RPM...", icon: "🔄" },
-  { threshold: 78, label: "Laser-scanning yarn for imperfections...", icon: "🔬" },
+  { threshold: 38, label: "Drawing slivers for uniform density...", icon: "📐" },
+  { threshold: 50, label: "Processing fibers through drafting frames...", icon: "⚙️" },
+  { threshold: 65, label: "Spinning: Twisting Ring Spun & OE Yarns...", icon: "🔄" },
+  { threshold: 78, label: "Laser-scanning yarn for standard quality...", icon: "🔬" },
   { threshold: 90, label: "Winding onto precision cross-wound cones...", icon: "🧶" },
-  { threshold: 100, label: "Climate-controlled packaging & export...", icon: "🌍" }
+  { threshold: 100, label: "Climate-controlled packaging & dispatch...", icon: "🌍" }
 ]
 
 function Loader({ onComplete }) {
@@ -111,8 +111,8 @@ function Loader({ onComplete }) {
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      <img src={logoImg} alt="ML Spinners logo" className="w-12 h-12 object-contain mb-2" />
-      <span className="text-[11px] text-coral font-bold tracking-[0.2em] uppercase mb-4">ML Spinner Mills</span>
+      <img src={logoImg} alt="ML Overseas logo" className="w-12 h-12 object-contain mb-2" />
+      <span className="text-[11px] text-coral font-bold tracking-[0.2em] uppercase mb-4">ML Overseas</span>
 
       <div className="relative mb-6 flex items-center justify-center w-40 h-40">
         {/* Floating cotton fiber particles */}

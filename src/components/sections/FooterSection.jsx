@@ -16,22 +16,25 @@ export default function FooterSection() {
             <Link to="/" className="flex items-center gap-3.5">
               <img 
                 src={logoImg} 
-                alt="ML Spinners logo" 
+                alt="ML Overseas logo" 
                 className="w-10 h-10 object-contain flex-shrink-0" 
               />
               <span className="text-[#0B1528] font-bold tracking-tight text-[16px] uppercase leading-none">
-                ML SPINNERS PVT. LTD.
+                ML OVERSEAS
               </span>
             </Link>
             
             <div className="space-y-3 font-semibold text-[13px] text-[#7A8293]">
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-coral flex-shrink-0" />
-                <span>PHONE : +91-8168680884</span>
+                <span>PHONE : +91-7422030303</span>
               </div>
               <div className="flex items-center gap-2.5 break-all">
                 <Mail className="w-4 h-4 text-coral flex-shrink-0" />
-                <span>EMAIL : mlspinnerspvtltd@gmail.com</span>
+                <span>EMAIL : Mloverseasoffice@gmail.com</span>
+              </div>
+              <div className="text-[11px] text-[#7A8293] mt-1 font-mono uppercase">
+                GSTIN: 06ACAFM9287H1ZV
               </div>
             </div>
           </div>
@@ -68,11 +71,11 @@ export default function FooterSection() {
             </h4>
             <ul className="space-y-3">
               {[
-                'Cotton Yarn', 
-                'Blended Yarn', 
-                'Organic Range', 
-                'Specialty Yarn', 
-                'Custom Orders'
+                'Ring Spun Yarns', 
+                'Open End (OE) Yarns', 
+                'Combed Cotton Yarns', 
+                'Polyester Cotton Blends', 
+                'Custom Yarns'
               ].map((l) => (
                 <li key={l}>
                   <Link 
@@ -94,11 +97,11 @@ export default function FooterSection() {
                 WANT TO STAY CONNECTED!
               </h4>
               <a 
-                href="mailto:mlspinnerspvtltd@gmail.com"
+                href="mailto:office@mloverseas.com"
                 className="inline-flex items-center justify-between px-5 py-3.5 bg-[#F5F6F8] rounded-[18px] text-[13.5px] text-[#0B1528] font-bold w-full hover:bg-cream hover:shadow-soft transition-all duration-300"
                 data-hover
               >
-                <span className="break-all">mlspinnerspvtltd@gmail.com</span>
+                <span className="break-all">office@mloverseas.com</span>
                 <ArrowUpRight className="w-4 h-4 text-[#0B1528] flex-shrink-0" />
               </a>
             </div>
@@ -111,7 +114,7 @@ export default function FooterSection() {
                     ADDRESS
                   </span>
                   <span className="leading-relaxed block">
-                    Opp. Mini Secretariat, Vill-Nagar, Gohana, Sonepat, Haryana-131301, India
+                    Khevat no. 251, Khatoni no. 275, Balana Road, VPO Naultha, Panipat - 132145, Haryana, India
                   </span>
                 </div>
               </div>
@@ -123,10 +126,10 @@ export default function FooterSection() {
                     CONTACT NUMBER
                   </span>
                   <a 
-                    href="tel:+918168680884" 
+                    href="tel:+917422030303" 
                     className="hover:text-coral transition-colors font-bold block text-[#7A8293]"
                   >
-                    +91-8168680884
+                    +91-7422 030303
                   </a>
                 </div>
               </div>
@@ -137,7 +140,7 @@ export default function FooterSection() {
 
         {/* Bottom copyright bar */}
         <div className="flex flex-col md:flex-row justify-between items-center border-t border-border mt-14 pt-8 text-[13px] text-[#7A8293] font-medium">
-          <span>© 2026 ML Spinners Pvt. Ltd. All rights reserved.</span>
+          <span>© 2026 ML Overseas. All rights reserved.</span>
           <div className="flex gap-8 mt-4 md:mt-0">
             {['Privacy Policy', 'Terms of Service'].map((l) => (
               <a key={l} href="#" className="hover:text-[#0B1528] transition-colors" data-hover>

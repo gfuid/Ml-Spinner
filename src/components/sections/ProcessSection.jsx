@@ -12,7 +12,7 @@ const PROCESS = [
   { num: '02', title: 'Fiber Cleaning', desc: 'Advanced pneumatic separation removes impurities preserving fiber integrity.', icon: '✨' },
   { num: '03', title: 'Precision Carding', desc: 'High-speed wire cylinders align fibers into uniform parallel arrays.', icon: '⚙️' },
   { num: '04', title: 'Drawing Frame', desc: 'Progressive drafting rollers blend slivers for perfect density.', icon: '📐' },
-  { num: '05', title: 'Ring Spinning', desc: 'Precision twist at 14,800 RPM creates strong, consistent yarn.', icon: '🔄' },
+  { num: '05', title: 'Ring & OE Spinning', desc: 'Precision twist on modern ring frames and high-speed rotor spinning machines.', icon: '🔄' },
   { num: '06', title: 'Quality Testing', desc: 'Dual-laser scanning verifies diameter, strength, and evenness.', icon: '🔬' },
   { num: '07', title: 'Cone Winding', desc: 'Cross-wound onto precision cones for seamless loom compatibility.', icon: '🧶' },
   { num: '08', title: 'Global Export', desc: 'Climate-controlled packaging and dispatch to 42+ countries.', icon: '🌍' },
@@ -58,7 +58,7 @@ export default function ProcessSection() {
             <div className="text-left">
               <span className="text-[13px] text-coral font-semibold tracking-[0.15em] uppercase block mb-3">Our Process</span>
               <h2 className="text-[clamp(32px,3.5vw,52px)] font-semibold leading-[1.1] tracking-[-0.02em] text-heading max-w-2xl">
-                From raw cotton to world-class yarn — in eight precision steps.
+                From raw cotton to world-class Ring Spun & OE yarns — in eight precision steps.
               </h2>
             </div>
             <div className="flex items-center gap-3">
