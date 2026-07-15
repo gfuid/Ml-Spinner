@@ -1,60 +1,84 @@
 import { useEffect, useRef } from 'react'
+import { gsap } from 'gsap'
 
 export default function CustomCursor() {
   const dotRef = useRef(null)
   const ringRef = useRef(null)
-  const pos = useRef({ x: 0, y: 0 })
-  const ringPos = useRef({ x: 0, y: 0 })
 
   useEffect(() => {
-    const handleMove = (e) => {
-      pos.current = { x: e.clientX, y: e.clientY }
-      if (dotRef.current) {
-        dotRef.current.style.left = `${e.clientX - 4}px`
-        dotRef.current.style.top = `${e.clientY - 4}px`
-      }
+    if (!dotRef.current || !ringRef.current) return
+
+    // Position setters for instant translation with high-performance GSAP quickTo
+    const setDotX = gsap.quickTo(dotRef.current, "x", { duration: 0.08, ease: "power3" })
+    const setDotY = gsap.quickTo(dotRef.current, "y", { duration: 0.08, ease: "power3" })
+    
+    const setRingX = gsap.quickTo(ringRef.current, "x", { duration: 0.35, ease: "power3" })
+    const setRingY = gsap.quickTo(ringRef.current, "y", { duration: 0.35, ease: "power3" })
+
+    // Position centered
+    gsap.set(dotRef.current, { xPercent: -50, yPercent: -50, x: window.innerWidth / 2, y: window.innerHeight / 2 })
+    gsap.set(ringRef.current, { xPercent: -50, yPercent: -50, x: window.innerWidth / 2, y: window.innerHeight / 2 })
+
+    const handleMouseMove = (e) => {
+      setDotX(e.clientX)
+      setDotY(e.clientY)
+      setRingX(e.clientX)
+      setRingY(e.clientY)
     }
 
-    // Smooth ring follow via rAF
-    let raf
-    const animateRing = () => {
-      ringPos.current.x += (pos.current.x - ringPos.current.x) * 0.12
-      ringPos.current.y += (pos.current.y - ringPos.current.y) * 0.12
-      if (ringRef.current) {
-        ringRef.current.style.left = `${ringPos.current.x - 20}px`
-        ringRef.current.style.top = `${ringPos.current.y - 20}px`
-      }
-      raf = requestAnimationFrame(animateRing)
-    }
-
-    // Hover detection — grow ring on interactive elements
-    const handleOver = (e) => {
+    const handleMouseOver = (e) => {
       const target = e.target.closest('a, button, [data-hover]')
-      if (target && ringRef.current) {
-        ringRef.current.classList.add('hovering')
+      if (target) {
+        gsap.to(ringRef.current, {
+          scale: 1.6,
+          borderColor: 'var(--color-coral)',
+          backgroundColor: 'rgba(255, 107, 90, 0.06)',
+          duration: 0.25,
+          ease: "power2.out"
+        })
+        gsap.to(dotRef.current, {
+          scale: 0.6,
+          backgroundColor: 'var(--color-coral)',
+          duration: 0.25,
+          ease: "power2.out"
+        })
       }
     }
-    const handleOut = () => {
-      if (ringRef.current) ringRef.current.classList.remove('hovering')
+
+    const handleMouseOut = (e) => {
+      const target = e.target.closest('a, button, [data-hover]')
+      if (target) {
+        gsap.to(ringRef.current, {
+          scale: 1,
+          borderColor: 'var(--color-navy)',
+          backgroundColor: 'transparent',
+          duration: 0.25,
+          ease: "power2.out"
+        })
+        gsap.to(dotRef.current, {
+          scale: 1,
+          backgroundColor: 'var(--color-coral)',
+          duration: 0.25,
+          ease: "power2.out"
+        })
+      }
     }
 
-    window.addEventListener('mousemove', handleMove)
-    document.addEventListener('mouseover', handleOver)
-    document.addEventListener('mouseout', handleOut)
-    raf = requestAnimationFrame(animateRing)
+    window.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseover', handleMouseOver)
+    document.addEventListener('mouseout', handleMouseOut)
 
     return () => {
-      window.removeEventListener('mousemove', handleMove)
-      document.removeEventListener('mouseover', handleOver)
-      document.removeEventListener('mouseout', handleOut)
-      cancelAnimationFrame(raf)
+      window.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseover', handleMouseOver)
+      document.removeEventListener('mouseout', handleMouseOut)
     }
   }, [])
 
   return (
     <>
-      <div ref={dotRef} className="cursor-dot hidden lg:block" />
-      <div ref={ringRef} className="cursor-ring hidden lg:block" />
+      <div ref={dotRef} className="cursor-dot hidden lg:block fixed pointer-events-none z-[10000] w-2.5 h-2.5 rounded-full bg-coral left-0 top-0" style={{ mixBlendMode: 'difference' }} />
+      <div ref={ringRef} className="cursor-ring hidden lg:block fixed pointer-events-none z-[9999] w-9 h-9 rounded-full border border-navy left-0 top-0 transition-none" />
     </>
   )
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { motion } from 'framer-motion'
 import { ChevronRight } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -27,30 +26,168 @@ export default function ProcessSection() {
     const containerEl = containerRef.current
     if (!listEl || !containerEl) return
 
-    // Calculate how much we need to scroll horizontally
-    const getScrollAmount = () => -(listEl.scrollWidth - window.innerWidth + 96)
+    const mm = gsap.matchMedia()
 
-    const ctx = gsap.context(() => {
-      gsap.to(listEl, {
-        x: getScrollAmount,
-        ease: 'none',
-        scrollTrigger: {
-          trigger: containerEl,
-          start: 'top top',
-          end: () => `+=${listEl.scrollWidth - window.innerWidth}`,
-          pin: true,
-          scrub: 1,
-          invalidateOnRefresh: true,
+    mm.add({
+      // Desktop query
+      isDesktop: "(min-width: 768px)",
+      // Mobile query
+      isMobile: "(max-width: 767px)"
+    }, (context) => {
+      const { isDesktop, isMobile } = context.conditions
+
+      if (isDesktop) {
+        // Reset any leftover styles from mobile viewport
+        gsap.set(listEl.children, { clearProps: "all" })
+        gsap.set(listEl, { clearProps: "all" })
+
+        // Calculate how much we need to scroll horizontally
+        const getScrollAmount = () => -(listEl.scrollWidth - window.innerWidth + 96)
+
+        // 1. Main horizontal scroll tween
+        const scrollTween = gsap.to(listEl, {
+          x: getScrollAmount,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: containerEl,
+            start: 'top top',
+            end: () => `+=${listEl.scrollWidth - window.innerWidth}`,
+            pin: true,
+            scrub: 1.2, // smoother scrub lag
+            invalidateOnRefresh: true,
+          }
+        })
+
+        // 2. Individual card scroll-based entrance reveals
+        const cards = listEl.children
+        Array.from(cards).forEach((card) => {
+          const numEl = card.querySelector('.step-num')
+          const iconEl = card.querySelector('.step-icon')
+
+          // Smoothly fade-in, scale and lift the card container as it scrolls onto the viewport
+          gsap.fromTo(card, 
+            { scale: 0.9, opacity: 0.5, y: 25 },
+            {
+              scale: 1,
+              opacity: 1,
+              y: 0,
+              ease: 'power3.out',
+              scrollTrigger: {
+                trigger: card,
+                containerAnimation: scrollTween,
+                start: 'left 95%',
+                end: 'left 60%',
+                scrub: true,
+              }
+            }
+          )
+
+          // Slide-in step numbers
+          if (numEl) {
+            gsap.fromTo(numEl,
+              { x: -15, opacity: 0 },
+              {
+                x: 0,
+                opacity: 1,
+                ease: 'power2.out',
+                scrollTrigger: {
+                  trigger: card,
+                  containerAnimation: scrollTween,
+                  start: 'left 92%',
+                  end: 'left 75%',
+                  scrub: true,
+                }
+              }
+            )
+          }
+
+          // Pulse icon
+          if (iconEl) {
+            gsap.fromTo(iconEl,
+              { scale: 0.6, rotate: -15 },
+              {
+                scale: 1,
+                rotate: 0,
+                ease: 'back.out(1.2)',
+                scrollTrigger: {
+                  trigger: card,
+                  containerAnimation: scrollTween,
+                  start: 'left 92%',
+                  end: 'left 75%',
+                  scrub: true,
+                }
+              }
+            )
+          }
+        })
+
+        return () => {
+          // Explicitly kill desktop animations and clear styles
+          gsap.killTweensOf(listEl)
+          Array.from(listEl.children).forEach(card => {
+            gsap.killTweensOf(card)
+            const numEl = card.querySelector('.step-num')
+            const iconEl = card.querySelector('.step-icon')
+            if (numEl) gsap.killTweensOf(numEl)
+            if (iconEl) gsap.killTweensOf(iconEl)
+          })
+          gsap.set(listEl, { clearProps: "all" })
+          gsap.set(listEl.children, { clearProps: "all" })
         }
-      })
+      }
+
+      if (isMobile) {
+        // Run on the next tick to ensure GSAP's desktop revert has fully completed
+        const timer = setTimeout(() => {
+          gsap.killTweensOf(listEl)
+          gsap.set(listEl, { clearProps: "all", x: 0, y: 0 })
+          gsap.set(containerEl, { clearProps: "all" })
+          
+          Array.from(listEl.children).forEach(card => {
+            gsap.killTweensOf(card)
+            gsap.set(card, { clearProps: "all", x: 0, y: 0, scale: 1, opacity: 1 })
+            const numEl = card.querySelector('.step-num')
+            const iconEl = card.querySelector('.step-icon')
+            if (numEl) gsap.set(numEl, { clearProps: "all", x: 0, opacity: 1 })
+            if (iconEl) gsap.set(iconEl, { clearProps: "all", scale: 1, rotate: 0 })
+          })
+          
+          // Recalculate ScrollTrigger offsets to resolve overlaps
+          ScrollTrigger.refresh()
+        }, 50)
+
+        // On mobile, just do a simple stagger entrance fade up of cards on scroll
+        gsap.fromTo(listEl.children,
+          { opacity: 0, y: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
+            stagger: 0.15,
+            scrollTrigger: {
+              trigger: listEl,
+              start: "top 85%",
+            }
+          }
+        )
+
+        return () => {
+          clearTimeout(timer)
+          // Explicitly kill mobile animations and clear styles
+          gsap.killTweensOf(listEl.children)
+          gsap.set(listEl, { clearProps: "all" })
+          gsap.set(listEl.children, { clearProps: "all" })
+          gsap.set(containerEl, { clearProps: "all" })
+        }
+      }
     })
 
-    return () => ctx.revert()
+    return () => mm.revert()
   }, [])
 
   return (
-    <div ref={containerRef} className="relative bg-cream overflow-hidden w-full" id="process">
-      <div className="h-screen flex flex-col justify-center noise">
+    <div ref={containerRef} className="relative bg-cream overflow-x-hidden overflow-y-visible w-full py-16 md:py-0" id="process">
+      <div className="min-h-screen md:h-screen flex flex-col justify-center noise">
         
         {/* Title Block */}
         <div className="container-editorial w-full px-4 md:px-8 mb-12">
@@ -62,26 +199,26 @@ export default function ProcessSection() {
               </h2>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-[12px] text-muted font-medium uppercase tracking-wider">Scroll Down</span>
+              <span className="text-[12px] text-muted font-medium uppercase tracking-wider hidden md:inline">Scroll Down</span>
             </div>
           </div>
         </div>
 
         {/* Sliding List of Cards */}
         <div className="w-full">
-          <div ref={listRef} className="flex gap-6 px-12 lg:px-24 w-max">
+          <div ref={listRef} className="flex flex-col md:flex-row gap-6 px-4 md:px-12 lg:px-24 w-full md:w-max">
             {PROCESS.map((step, i) => (
-              <motion.div
+              <div
                 key={i}
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="flex-shrink-0 w-[280px] lg:w-[330px] bg-white rounded-3xl p-8 shadow-soft hover:shadow-float transition-all duration-500 group border border-border/40 text-left"
+                className="w-full md:w-[330px] md:flex-shrink-0 bg-white rounded-3xl p-8 shadow-soft hover:shadow-float hover:-translate-y-2 transition-all duration-500 group border border-border/40 text-left"
                 data-hover
+                style={{ opacity: 0 }}
               >
                 <div className="flex items-start justify-between mb-6">
-                  <span className="text-[48px] font-semibold text-border group-hover:text-coral transition-colors duration-500 leading-none tracking-tight">
+                  <span className="step-num text-[48px] font-semibold text-border group-hover:text-coral transition-colors duration-500 leading-none tracking-tight">
                     {step.num}
                   </span>
-                  <span className="text-3xl p-2.5 bg-cream rounded-2xl group-hover:bg-coral-soft transition-colors duration-500">
+                  <span className="step-icon text-3xl p-2.5 bg-cream rounded-2xl group-hover:bg-coral-soft transition-colors duration-500">
                     {step.icon}
                   </span>
                 </div>
@@ -90,7 +227,7 @@ export default function ProcessSection() {
                 <div className="flex items-center gap-1 mt-6 text-[12px] text-coral font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0">
                   Explore Spec <ChevronRight className="w-3.5 h-3.5" />
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

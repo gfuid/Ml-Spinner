@@ -16,7 +16,7 @@ export default function ThreeCanvas() {
   }, [])
 
   return (
-    <div className="w-full h-full" style={{ minHeight: '400px' }}>
+    <div className="w-full h-full min-h-[280px] sm:min-h-[360px] md:min-h-[400px]">
       <Canvas
         camera={{ position: [0, 0.3, 3.2], fov: 45 }}
         gl={{
