@@ -111,7 +111,7 @@ function Loader({ onComplete }) {
       exit={{ opacity: 0, scale: 1.05 }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
     >
-      <img src={logoImg} alt="ML Overseas logo" className="w-12 h-12 object-contain mb-2" />
+      <img src={logoImg} alt="ML Overseas logo" className="w-16 h-16 object-contain mb-2" />
       <span className="text-[11px] text-coral font-bold tracking-[0.2em] uppercase mb-4">ML Overseas</span>
 
       <div className="relative mb-6 flex items-center justify-center w-40 h-40">

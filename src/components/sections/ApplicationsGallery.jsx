@@ -34,7 +34,7 @@ const scaleIn = {
 
 export default function ApplicationsGallery() {
   return (
-    <section className="min-h-screen w-full flex flex-col justify-center items-center relative bg-cream/20 noise border-t border-b border-border/40 py-24" id="gallery">
+    <section className="w-full flex flex-col justify-center items-center relative bg-cream/20 noise border-t border-b border-border/40 py-16 md:py-24" id="gallery">
       {/* Soft background blurs */}
       <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] rounded-full bg-blue-soft/30 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/3 right-1/4 w-[400px] h-[400px] rounded-full bg-coral-soft/20 blur-3xl pointer-events-none" />

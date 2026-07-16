@@ -24,7 +24,7 @@ export default function CTASection() {
   }
 
   return (
-    <section className="min-h-screen w-full flex items-center justify-center relative bg-white py-20 overflow-hidden" id="contact">
+    <section className="w-full flex items-center justify-center relative bg-white py-16 md:py-24 overflow-hidden" id="contact">
       {/* Background soft gradients */}
       <div className="absolute top-1/4 right-[-10%] w-[450px] h-[450px] rounded-full bg-gradient-to-br from-coral-soft to-blue-soft opacity-30 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 left-[-10%] w-[400px] h-[400px] rounded-full bg-gradient-to-tr from-[#FFF0EE] to-[#EBF2FF] opacity-30 blur-3xl pointer-events-none" />
@@ -215,6 +215,26 @@ export default function CTASection() {
           </motion.div>
 
         </div>
+
+        {/* Location Google Map */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={fadeUp}
+          className="mt-16 w-full rounded-[32px] overflow-hidden border border-border/60 shadow-lifted h-[350px] md:h-[450px] relative bg-cream"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d111586.82285854651!2d76.84332468305886!3d29.35338167812543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390dd9bb9d6a2f7f%3A0x64e6f494f1c90c74!2sBalana%20Rd%2C%20Naultha%2C%20Haryana%20132145!5e0!3m2!1sen!2sin!4v1717652758496!5m2!1sen!2sin"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="ML Overseas Location Map"
+          ></iframe>
+        </motion.div>
 
       </div>
     </section>

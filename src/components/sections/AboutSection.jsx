@@ -57,8 +57,8 @@ export default function AboutSection() {
   return (
     <div ref={sectionRef} className="w-full">
       
-      {/* ─── PART 1: WHO WE ARE (100vh) ─── */}
-      <section className="min-h-screen w-full flex items-center justify-center relative bg-white py-16" id="about">
+      {/* ─── PART 1: WHO WE ARE ─── */}
+      <section className="w-full flex items-center justify-center relative bg-white py-16 md:py-24" id="about">
         <div className="container-editorial w-full px-4 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             
@@ -73,7 +73,7 @@ export default function AboutSection() {
               <div className="relative rounded-3xl overflow-hidden shadow-lifted h-[320px] md:h-[450px] lg:h-[500px]">
                 <motion.div style={{ y: imageY }} className="h-full w-full">
                   <img 
-                    src="/about.png" 
+                    src="/about_factory.png" 
                     alt="ML Overseas premium factory tour view" 
                     loading="lazy"
                     className="w-full h-[120%] object-cover absolute -top-[10%]" 
@@ -111,14 +111,14 @@ export default function AboutSection() {
               </div>
               
               <div className="space-y-4 text-base text-text leading-relaxed font-medium">
-                <p className="text-[18px] text-heading font-semibold leading-relaxed">
-                  We’re in the business since 2022 providing cutting edge solutions.
+                <p className="text-[18px] text-heading font-semibold leading-relaxed font-serifHead uppercase tracking-wider">
+                  SPINNING WORLD-CLASS QUALITY SINCE 2022
                 </p>
                 <p>
-                  ML Overseas is a leading manufacturer of premium Ring Spun and OE Yarns, based near the capital of India, New Delhi. ML Overseas utilizes advanced technology and modern machinery to produce superior quality cotton and blended yarns.
+                  Established in 2022, ML Overseas was founded with a clear vision: to redefine the global textile landscape by manufacturing premium-grade Ring Spun and Open End (OE) yarns while maintaining a carbon-neutral manufacturing footprint. Operating from our state-of-the-art facility located in the textile hub of Panipat, Haryana, near New Delhi, we utilize the world's most advanced automated spinning technologies from Swiss and German manufacturers.
                 </p>
                 <p>
-                  With the ability and capacity to produce and deliver large quantities of excellent yarns, we are equipped to cater to multiple requirements of both international and domestic clients with ease, competence and efficiency.
+                  Our factory is built to deliver unmatched consistency, tensile strength, and quality in every single package. With high production capacities and rigorous quality testing, we are fully equipped to serve the complex requirements of both domestic apparel houses and international sourcing partners with absolute precision, speed, and efficiency.
                 </p>
               </div>
 
@@ -150,8 +150,8 @@ export default function AboutSection() {
         </div>
       </section>
 
-      {/* ─── PART 2: SOLUTIONS (100vh) ─── */}
-      <section className="min-h-screen w-full flex flex-col justify-center items-center relative bg-cream/20 noise border-t border-border/30 py-20" id="solutions">
+      {/* ─── PART 2: SOLUTIONS ─── */}
+      <section className="w-full flex flex-col justify-center items-center relative bg-cream/20 noise border-t border-border/30 py-16 md:py-24" id="solutions">
         <div className="container-editorial w-full px-4 md:px-8 text-center">
           
           {/* Header Block */}

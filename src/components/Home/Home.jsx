@@ -5,7 +5,6 @@ import AboutSection from '../sections/AboutSection'
 import ProcessSection from '../sections/ProcessSection'
 import ProductsSection from '../sections/ProductsSection'
 import ApplicationsGallery from '../sections/ApplicationsGallery'
-import LabSection from '../sections/LabSection'
 import SustainabilitySection from '../sections/SustainabilitySection'
 import InfrastructureSection from '../sections/InfrastructureSection'
 import CTASection from '../sections/CTASection'
@@ -19,7 +18,6 @@ export default function Home({ loading }) {
       <ProcessSection />
       <ProductsSection />
       <ApplicationsGallery />
-      <LabSection />
       <SustainabilitySection />
       <InfrastructureSection />
       <CTASection />

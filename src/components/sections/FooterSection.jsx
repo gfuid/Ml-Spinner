@@ -17,7 +17,7 @@ export default function FooterSection() {
               <img 
                 src={logoImg} 
                 alt="ML Overseas logo" 
-                className="w-10 h-10 object-contain flex-shrink-0" 
+                className="w-14 h-14 object-contain flex-shrink-0" 
               />
               <span className="text-[#0B1528] font-bold tracking-tight text-[16px] uppercase leading-none">
                 ML OVERSEAS

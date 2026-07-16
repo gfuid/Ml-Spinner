@@ -29,7 +29,7 @@ export default function InfrastructureSection() {
   const [activeSlide, setActiveSlide] = useState(0)
 
   return (
-    <section className="min-h-screen w-full flex items-center justify-center relative bg-cream py-16 noise border-t border-b border-border/40" id="infrastructure">
+    <section className="w-full flex items-center justify-center relative bg-cream py-16 md:py-24 noise border-t border-b border-border/40" id="infrastructure">
       <div className="container-editorial w-full px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           

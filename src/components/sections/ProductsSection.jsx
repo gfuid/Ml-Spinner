@@ -18,7 +18,7 @@ const scaleIn = {
 
 export default function ProductsSection() {
   return (
-    <section className="min-h-screen w-full flex items-center justify-center relative bg-white py-16" id="products">
+    <section className="w-full flex items-center justify-center relative bg-white py-16 md:py-24" id="products">
       <div className="container-editorial w-full px-4 md:px-8">
         
         {/* Title Block */}

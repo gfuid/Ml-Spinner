@@ -18,7 +18,7 @@ const LAB_CARDS = [
 
 export default function LabSection() {
   return (
-    <section className="min-h-screen w-full flex items-center justify-center relative bg-gradient-to-b from-white to-[#F8F9FB] py-16 overflow-hidden" id="lab">
+    <section className="w-full flex items-center justify-center relative bg-gradient-to-b from-white to-[#F8F9FB] py-16 md:py-24 overflow-hidden" id="lab">
       {/* Decorative blur elements */}
       <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] rounded-full bg-blue-soft/30 blur-3xl pointer-events-none animate-blob" />
       <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] rounded-full bg-coral-soft/20 blur-3xl pointer-events-none animate-blob-delay" />

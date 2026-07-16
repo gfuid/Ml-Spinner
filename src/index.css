@@ -1,22 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'General Sans', 'Inter', system-ui, -apple-system, sans-serif;
-  --font-display: 'General Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif-head: 'Cormorant Garamond', 'Playfair Display', serif;
+  --font-sans-body: 'Montserrat', 'Inter', sans-serif;
+
+  --font-sans: 'Montserrat', 'Inter', sans-serif;
+  --font-display: 'Cormorant Garamond', 'Playfair Display', serif;
 
   --color-white: #FFFFFF;
-  --color-offwhite: #FCFCFC;
-  --color-cream: #F8F9FB;
-  --color-soft-gray: #F0F1F3;
-  --color-border: #E8E9EC;
-  --color-muted: #9CA3AF;
-  --color-text: #4A4A5A;
-  --color-heading: #1a1a2e;
-  --color-navy: #1B2B4B;
-  --color-coral: #FF6B5A;
-  --color-coral-soft: #FFF0EE;
-  --color-blue-soft: #EBF2FF;
-  --color-blue: #4A8FE7;
+  --color-offwhite: #FBFBFA;
+  --color-cream: #FBFBFA;
+  --color-soft-gray: #F4F3EF;
+  --color-border: #E5DCD0;
+  --color-muted: #A9A2A0;
+  --color-text: #555555;
+  --color-heading: #473C38;
+  --color-navy: #473C38;
+  --color-coral: #C5A880;
+  --color-coral-soft: #F5EFEB;
+  --color-blue-soft: #F5EFEB;
+  --color-blue: #C5A880;
+
+  --color-luxury-bg: #FBFBFA;
+  --color-accent-gold: #C5A880;
+  --color-charcoal-dark: #473C38;
 
   --radius-sm: 12px;
   --radius-md: 16px;
@@ -38,7 +47,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: var(--color-white);
+  background: var(--color-luxury-bg);
   color: var(--color-text);
   font-family: var(--font-sans);
   font-weight: 400;

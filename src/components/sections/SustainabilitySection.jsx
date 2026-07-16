@@ -26,7 +26,7 @@ const ITEMS = [
 
 export default function SustainabilitySection() {
   return (
-    <section className="min-h-screen w-full flex items-center justify-center relative bg-white py-16" id="sustainability">
+    <section className="w-full flex items-center justify-center relative bg-white py-16 md:py-24" id="sustainability">
       <div className="container-editorial w-full px-4 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           
@@ -40,7 +40,7 @@ export default function SustainabilitySection() {
             </div>
             
             <p className="text-base text-text leading-relaxed">
-              From solar-powered facilities to zero-waste water recycling, sustainability isn't a department — it's our foundation.
+              At ML Overseas, sustainability is embedded in every revolution of our spindles. We demonstrate that large-scale textile operations can thrive without harming the environment. Our facility is powered by a 40% clean solar energy grid, and we operate an advanced zero-discharge Water Purification & Effluent Treatment Plant (ETP). This specialized plant purifies and recycles 100% of our dyeing water, ensuring zero chemical runoff enters local ecosystems or water tables.
             </p>
             
             {/* Eco stats blocks */}
@@ -81,7 +81,7 @@ export default function SustainabilitySection() {
           >
             <div className="rounded-3xl overflow-hidden shadow-lifted h-[320px] md:h-[450px] lg:h-[520px]">
               <img 
-                src="/sustainability.png" 
+                src="/sustainability_eco.png" 
                 alt="Sustainable cotton agriculture" 
                 className="w-full h-full object-cover" 
               />

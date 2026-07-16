@@ -19,7 +19,7 @@ export default function ClientsSection() {
   const group2 = CLIENTS.slice(half)
 
   return (
-    <section className="min-h-screen w-full flex flex-col justify-center items-center relative overflow-hidden bg-cream/20 noise border-t border-b border-border py-16" id="clients">
+    <section className="w-full flex flex-col justify-center items-center relative overflow-hidden bg-cream/20 noise border-t border-b border-border py-16 md:py-20" id="clients">
       {/* Background blurs */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-gradient-to-r from-blue-soft/20 to-coral-soft/20 rounded-full blur-3xl pointer-events-none" />
 
