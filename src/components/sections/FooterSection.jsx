@@ -7,23 +7,23 @@ export default function FooterSection() {
   return (
     <footer className="w-full bg-[#FCFCFC] border-t border-border py-16 lg:py-24 text-left">
       <div className="container-editorial w-full px-4 md:px-8">
-        
+
         {/* Columns Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-16">
-          
+
           {/* Column 1: Logo & Brand details */}
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3.5">
-              <img 
-                src={logoImg} 
-                alt="ML Overseas logo" 
-                className="w-14 h-14 object-contain flex-shrink-0" 
+              <img
+                src={logoImg}
+                alt="ML Overseas logo"
+                className="w-14 h-14 object-contain flex-shrink-0"
               />
               <span className="text-[#0B1528] font-bold tracking-tight text-[16px] uppercase leading-none">
                 ML OVERSEAS
               </span>
             </Link>
-            
+
             <div className="space-y-3 font-semibold text-[13px] text-[#7A8293]">
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-coral flex-shrink-0" />
@@ -47,14 +47,14 @@ export default function FooterSection() {
             <ul className="space-y-3">
               {[
                 { name: 'About Us', href: '/about-us' },
-                { name: 'Our Process', href: '/applications' },
+                { name: 'Products', href: '/products' },
                 { name: 'Infrastructure', href: '/about-us' },
                 { name: 'Contact Us', href: '/contact-us' }
               ].map((l) => (
                 <li key={l.name}>
-                  <Link 
-                    to={l.href} 
-                    className="text-[14px] text-[#7A8293] hover:text-[#0B1528] transition-colors font-medium" 
+                  <Link
+                    to={l.href}
+                    className="text-[14px] text-[#7A8293] hover:text-[#0B1528] transition-colors font-medium"
                     data-hover
                   >
                     {l.name}
@@ -71,16 +71,14 @@ export default function FooterSection() {
             </h4>
             <ul className="space-y-3">
               {[
-                'Ring Spun Yarns', 
-                'Open End (OE) Yarns', 
-                'Combed Cotton Yarns', 
-                'Polyester Cotton Blends', 
-                'Custom Yarns'
+                'Ring Spun Yarns',
+                'Open End (OE) Yarns',
+                'Polyester Cotton Blends',
               ].map((l) => (
                 <li key={l}>
-                  <Link 
-                    to="/applications" 
-                    className="text-[14px] text-[#7A8293] hover:text-[#0B1528] transition-colors font-medium" 
+                  <Link
+                    to="/products"
+                    className="text-[14px] text-[#7A8293] hover:text-[#0B1528] transition-colors font-medium"
                     data-hover
                   >
                     {l}
@@ -96,7 +94,7 @@ export default function FooterSection() {
               <h4 className="text-[12px] font-bold text-[#0B1528] uppercase tracking-[0.18em] mb-4">
                 WANT TO STAY CONNECTED!
               </h4>
-              <a 
+              <a
                 href="mailto:office@mloverseas.com"
                 className="inline-flex items-center justify-between px-5 py-3.5 bg-[#F5F6F8] rounded-[18px] text-[13.5px] text-[#0B1528] font-bold w-full hover:bg-cream hover:shadow-soft transition-all duration-300"
                 data-hover
@@ -125,8 +123,8 @@ export default function FooterSection() {
                   <span className="text-[11px] font-bold text-[#0B1528] block tracking-wide uppercase">
                     CONTACT NUMBER
                   </span>
-                  <a 
-                    href="tel:+917422030303" 
+                  <a
+                    href="tel:+917422030303"
                     className="hover:text-coral transition-colors font-bold block text-[#7A8293]"
                   >
                     +91-7422 030303

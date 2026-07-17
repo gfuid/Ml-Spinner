@@ -66,9 +66,9 @@ export default function Navbar() {
             About Us
           </Link>
           <Link
-            to="/applications"
+            to="/products"
             data-hover
-            className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans px-4 py-2 rounded-full transition-all duration-300 ${location.pathname === '/applications' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/50'
+            className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans px-4 py-2 rounded-full transition-all duration-300 ${location.pathname === '/products' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/50'
               }`}
           >
             Products
@@ -136,9 +136,9 @@ export default function Navbar() {
                 About Us
               </Link>
               <Link
-                to="/applications"
+                to="/products"
                 onClick={() => setMenuOpen(false)}
-                className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans py-3 px-4 rounded-2xl transition-all ${location.pathname === '/applications' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/40'
+                className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans py-3 px-4 rounded-2xl transition-all ${location.pathname === '/products' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/40'
                   }`}
               >
                 Products

@@ -34,7 +34,7 @@ function RouteMetadataManager() {
         document.title = "About Us — ML Overseas | Spun Since 2022"
         updateMetaDescription("Get informed about ML Overseas, leading manufacturer of Ring Spun and Open End (OE) yarns. Discover our manufacturing facility, standards, and testing labs.")
         break
-      case '/applications':
+      case '/products':
         document.title = "Yarn Applications & Products — ML Overseas"
         updateMetaDescription("Explore our precision Ring Spun and Open End yarn products, custom blends, and end-use applications.")
         break
@@ -279,13 +279,51 @@ function App() {
         {!loading && <Navbar />}
 
         {/* PAGES / ROUTING */}
-        <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home loading={loading} />} />
-            <Route path="/about-us" element={<AboutUs />} />
-            <Route path="/applications" element={<Applications />} />
-            <Route path="/contact-us" element={<ContactUs />} />
-          </Routes>
+        <main className="flex-grow overflow-hidden">
+          <AnimatePresence mode="wait">
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                >
+                  <Home loading={loading} />
+                </motion.div>
+              } />
+              <Route path="/about-us" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                >
+                  <AboutUs />
+                </motion.div>
+              } />
+              <Route path="/products" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                >
+                  <Applications />
+                </motion.div>
+              } />
+              <Route path="/contact-us" element={
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
+                >
+                  <ContactUs />
+                </motion.div>
+              } />
+            </Routes>
+          </AnimatePresence>
         </main>
 
         {/* GLOBAL FOOTER */}

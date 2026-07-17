@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -95,10 +94,6 @@ export default function ProcessSection() {
                     {step.desc}
                   </p>
                 </div>
-                
-                <div className="flex items-center gap-1.5 mt-8 text-[12px] text-coral font-semibold uppercase tracking-wider">
-                  Explore Spec <ArrowRight className="w-3.5 h-3.5" />
-                </div>
               </div>
             ))}
           </div>
@@ -132,10 +127,6 @@ export default function ProcessSection() {
                   <p className="text-[13.5px] text-text mt-3 leading-relaxed font-sans font-normal">
                     {step.desc}
                   </p>
-                </div>
-                
-                <div className="flex items-center gap-1.5 mt-6 text-[12px] text-coral font-semibold uppercase tracking-wider">
-                  Explore Spec <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </motion.div>
             ))}
