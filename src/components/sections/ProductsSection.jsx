@@ -11,9 +11,17 @@ const PRODUCTS = [
 const stagger = {
   visible: { transition: { staggerChildren: 0.12 } }
 }
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+const slideInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+}
+const slideInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+}
+const slideInBottom = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
 }
 
 export default function ProductsSection() {
@@ -45,7 +53,7 @@ export default function ProductsSection() {
           {PRODUCTS.map((p, i) => (
             <motion.div
               key={i}
-              variants={scaleIn}
+              variants={i === 0 ? slideInLeft : i === 2 ? slideInRight : slideInBottom}
               whileHover={{ y: -10, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
               className="group bg-white border border-border rounded-2xl p-8 hover:shadow-float transition-all duration-500 text-left"
               data-hover

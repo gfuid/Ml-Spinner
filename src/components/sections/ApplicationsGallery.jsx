@@ -27,9 +27,17 @@ const APPLICATIONS_DATA = [
 const stagger = {
   visible: { transition: { staggerChildren: 0.1 } }
 }
-const scaleIn = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+const slideInLeft = {
+  hidden: { opacity: 0, x: -50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+}
+const slideInRight = {
+  hidden: { opacity: 0, x: 50 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+}
+const slideInBottom = {
+  hidden: { opacity: 0, y: 50 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
 }
 
 export default function ApplicationsGallery() {
@@ -65,7 +73,7 @@ export default function ApplicationsGallery() {
           {APPLICATIONS_DATA.map((item, i) => (
             <motion.div
               key={i}
-              variants={scaleIn}
+              variants={i % 3 === 0 ? slideInLeft : i % 3 === 2 ? slideInRight : slideInBottom}
               whileHover={{ y: -8, transition: { duration: 0.4, ease: [0.16, 1, 0.3, 1] } }}
               className="flex flex-col group bg-white border border-border/50 rounded-3xl overflow-hidden shadow-soft hover:shadow-float transition-all duration-500 text-left"
               data-hover

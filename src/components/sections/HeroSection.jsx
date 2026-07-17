@@ -113,7 +113,7 @@ export default function HeroSection({ loading }) {
             initial={{ opacity: 0, scale: 0.85, y: 30 }}
             animate={loading ? {} : { opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="relative h-[280px] sm:h-[360px] md:h-[420px] lg:h-[520px]"
+            className="relative h-[280px] sm:h-[360px] md:h-[420px] lg:h-[520px] w-full overflow-hidden"
           >
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
               <div className="w-[240px] h-[240px] sm:w-[300px] sm:h-[300px] lg:w-[450px] lg:h-[450px] rounded-full bg-gradient-to-br from-blue-soft via-coral-soft to-cream opacity-60 blur-3xl" />
