@@ -110,7 +110,7 @@ export default function Navbar() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: -10 }}
             transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="lg:hidden mx-auto mt-2 max-w-sm bg-white/95 backdrop-blur-md border border-border/40 rounded-3xl p-5 shadow-lifted"
+            className="lg:hidden mx-auto mt-2 w-full max-w-sm bg-white/95 backdrop-blur-md border border-border/40 rounded-3xl p-5 shadow-lifted"
           >
             <div className="flex flex-col gap-1.5 text-center">
               <Link

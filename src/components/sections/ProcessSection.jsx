@@ -68,7 +68,7 @@ export default function ProcessSection() {
         </div>
 
         {/* Sliding List of Cards */}
-        <div className="w-full">
+        <div className="w-full overflow-hidden">
           <div ref={listRef} className="flex gap-6 px-4 md:px-12 lg:px-24 w-max">
             {PROCESS.map((step, i) => (
               <div
