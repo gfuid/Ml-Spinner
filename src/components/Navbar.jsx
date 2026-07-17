@@ -29,11 +29,10 @@ export default function Navbar() {
       className="fixed top-0 left-0 w-full z-50 px-4 pt-4"
     >
       {/* Floating Glass Capsule */}
-      <div className={`container-editorial mx-auto transition-all duration-500 rounded-full px-6 lg:px-8 py-3 flex items-center justify-between ${
-        navScrolled 
-          ? 'bg-white/70 backdrop-blur-xl border border-white/40 shadow-lifted' 
-          : 'bg-white/35 backdrop-blur-xl border border-white/30 shadow-soft'
-      }`}>
+      <div className={`container-editorial mx-auto transition-all duration-500 rounded-full px-6 lg:px-8 py-3 flex items-center justify-between ${navScrolled
+        ? 'bg-white/70 backdrop-blur-xl border border-white/40 shadow-lifted'
+        : 'bg-white/35 backdrop-blur-xl border border-white/30 shadow-soft'
+        }`}>
 
         {/* Left Side: Brand Logo box & Title */}
         <Link to="/" className="flex items-center gap-3 group" data-hover>
@@ -72,7 +71,15 @@ export default function Navbar() {
             className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans px-4 py-2 rounded-full transition-all duration-300 ${location.pathname === '/applications' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/50'
               }`}
           >
-            Applications
+            Products
+          </Link>
+          <Link
+            to="/contact-us"
+            data-hover
+            className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans px-4 py-2 rounded-full transition-all duration-300 ${location.pathname === '/contact-us' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/50'
+              }`}
+          >
+            Contact Us
           </Link>
         </div>
 
@@ -99,7 +106,6 @@ export default function Navbar() {
             <span className={`w-4 h-0.5 bg-heading rounded-full transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-1' : ''}`} />
           </div>
         </button>
-
       </div>
 
       {/* Mobile Menu Dropdown */}
@@ -121,7 +127,6 @@ export default function Navbar() {
               >
                 Home
               </Link>
-
               <Link
                 to="/about-us"
                 onClick={() => setMenuOpen(false)}
@@ -130,14 +135,21 @@ export default function Navbar() {
               >
                 About Us
               </Link>
-
               <Link
                 to="/applications"
                 onClick={() => setMenuOpen(false)}
                 className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans py-3 px-4 rounded-2xl transition-all ${location.pathname === '/applications' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/40'
                   }`}
               >
-                Applications
+                Products
+              </Link>
+              <Link
+                to="/contact-us"
+                onClick={() => setMenuOpen(false)}
+                className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans py-3 px-4 rounded-2xl transition-all ${location.pathname === '/contact-us' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/40'
+                  }`}
+              >
+                Contact Us
               </Link>
 
               {/* Mobile CTA */}

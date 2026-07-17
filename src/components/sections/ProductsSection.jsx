@@ -3,8 +3,8 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
 const PRODUCTS = [
-  { tag: 'Ring Spun', title: '100% Combed Cotton Yarn', desc: 'Premium long-staple combed cotton spun on ring frames for maximum tensile strength, softness, and durability.', count: 'Ne 16s - 40s', strength: '2400+ CSP', hairiness: 'Low Hairiness' },
-  { tag: 'Open End', title: 'OE Cotton & Blended Yarn', desc: 'Highly uniform Open End yarns spun for optimal bulkiness and absorption, perfect for denim and heavy knits.', count: 'Ne 10s - 24s', strength: '1600+ CSP', hairiness: 'Standard' },
+  { tag: 'Ring Spun', title: '100% Polyester Ring Spun Yarn', desc: 'Our 100% Polyester Ring Spun Yarn offers the ideal balance of premium aesthetics, consistent performance, and remarkable versatility for diverse textile applications.', count: 'Ne 16s - 40s', strength: '2400+ CSP', hairiness: 'Low Hairiness' },
+  { tag: 'Open End', title: 'OE Cotton & Blended Yarn', desc: 'Highly uniform Open End yarns spun for optimal bulkiness and absorption, perfect for denim and heavy knits.', count: 'Ne 3s - 20s', strength: '1200/2500+ CSP', hairiness: 'Standard' },
   { tag: 'Custom Blend', title: 'Polyester-Cotton Blends', desc: 'Engineered blends combining cotton comfort with polyester strength, tailored to client specification ratios.', count: 'Ne 12s - 30s', strength: '1900+ CSP', hairiness: 'Low-to-Mid' },
 ]
 
@@ -28,7 +28,7 @@ export default function ProductsSection() {
   return (
     <section className="w-full flex items-center justify-center relative bg-white py-16 md:py-24" id="products">
       <div className="container-editorial w-full px-4 md:px-8">
-        
+
         {/* Title Block */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
           <div className="text-left">
@@ -43,11 +43,11 @@ export default function ProductsSection() {
         </div>
 
         {/* Product Cards Grid */}
-        <motion.div 
+        <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
-          variants={stagger} 
+          variants={stagger}
           className="grid grid-cols-1 md:grid-cols-3 gap-6"
         >
           {PRODUCTS.map((p, i) => (
@@ -65,11 +65,11 @@ export default function ProductsSection() {
               <p className="text-[14px] text-text mt-3 leading-relaxed min-h-[72px]">
                 {p.desc}
               </p>
-              
+
               <div className="mt-8 pt-6 border-t border-border space-y-3">
                 {[
-                  ['Yarn Count', p.count], 
-                  ['Tensile Strength', p.strength], 
+                  ['Yarn Count', p.count],
+                  ['Tensile Strength', p.strength],
                   ['Hairiness Index', p.hairiness]
                 ].map(([l, v]) => (
                   <div key={l} className="flex justify-between items-center text-[13px]">
@@ -78,7 +78,7 @@ export default function ProductsSection() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="flex items-center gap-1.5 mt-6 text-[13px] text-coral font-medium opacity-0 group-hover:opacity-100 transition-all duration-300">
                 View specifications <ArrowRight className="w-3.5 h-3.5" />
               </div>
