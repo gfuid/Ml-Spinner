@@ -6,7 +6,9 @@ import ApplicationsGallery from '../sections/ApplicationsGallery'
 export default function Applications() {
   return (
     <div id="applications" className="pt-24 lg:pt-28">
-      <ProcessSection />
+      <div className="hidden lg:block">
+        <ProcessSection />
+      </div>
       <ProductsSection />
       <ApplicationsGallery />
     </div>

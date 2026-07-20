@@ -257,6 +257,7 @@ function Loader({ onComplete }) {
 function App() {
   const [loading, setLoading] = useState(true)
   const { scrollYProgress } = useScroll()
+  const location = useLocation()
 
   return (
     <>

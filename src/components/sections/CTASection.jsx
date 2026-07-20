@@ -144,7 +144,7 @@ export default function CTASection() {
             <div className="absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r from-coral to-navy" />
             
             <h3 className="text-xl font-bold text-heading mb-6 tracking-tight">
-              Send us an inquiry
+              Contact us for an export query
             </h3>
             
             <form onSubmit={handleSubmit} className="space-y-5 relative z-10">
