@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { ShieldCheck, Award } from 'lucide-react'
+import { ShieldCheck, Award, Disc } from 'lucide-react'
 
 // Import assets from the assets/About folder
 import cottonPolyesterBlendImg from '../../assets/About/Cotton - Polyestor Blend Yarns.png'
@@ -52,6 +52,155 @@ const SOLUTIONS = [
   }
 ]
 
+/* ─── Interactive Yarn Image Card with 3D Tilt & Dhaar (Thread) Hover Animation ─── */
+function InteractiveYarnCard({ imageY }) {
+  const [hovered, setHovered] = useState(false)
+  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5, rotateX: 0, rotateY: 0 })
+  const cardRef = useRef(null)
+
+  const handleMouseMove = (e) => {
+    if (!cardRef.current) return
+    const rect = cardRef.current.getBoundingClientRect()
+    const x = (e.clientX - rect.left) / rect.width
+    const y = (e.clientY - rect.top) / rect.height
+    const rotateY = (x - 0.5) * 16
+    const rotateX = (0.5 - y) * 16
+    setMousePos({ x, y, rotateX, rotateY })
+  }
+
+  const handleMouseEnter = () => setHovered(true)
+  const handleMouseLeave = () => {
+    setHovered(false)
+    setMousePos({ x: 0.5, y: 0.5, rotateX: 0, rotateY: 0 })
+  }
+
+  const curveOffset = hovered ? (mousePos.x - 0.5) * 80 : 0
+  const curveYOffset = hovered ? (mousePos.y - 0.5) * 60 : 0
+
+  return (
+    <div 
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className="relative group cursor-pointer"
+      style={{ perspective: '1000px' }}
+      data-hover
+    >
+      <div 
+        className="relative rounded-3xl overflow-hidden shadow-lifted h-[320px] md:h-[450px] lg:h-[500px] transition-transform duration-300 ease-out border border-white/40"
+        style={{
+          transform: hovered 
+            ? `rotateX(${mousePos.rotateX}deg) rotateY(${mousePos.rotateY}deg) scale(1.02)` 
+            : 'rotateX(0deg) rotateY(0deg) scale(1)'
+        }}
+      >
+        <motion.div style={{ y: imageY }} className="h-full w-full">
+          <img 
+            src="/about_factory.png" 
+            alt="ML Overseas premium factory tour view" 
+            loading="lazy"
+            className="w-full h-[120%] object-cover absolute -top-[10%] transition-transform duration-700 ease-out group-hover:scale-105" 
+          />
+        </motion.div>
+
+        {/* Dynamic Flashlight Cursor Glow */}
+        <div 
+          className="absolute inset-0 pointer-events-none transition-opacity duration-300 z-10"
+          style={{
+            opacity: hovered ? 1 : 0,
+            background: `radial-gradient(350px circle at ${mousePos.x * 100}% ${mousePos.y * 100}%, rgba(255, 107, 90, 0.25), transparent 70%)`
+          }}
+        />
+
+        {/* Interactive Thread Strands ("Dhaaro / Dhaaga" SVG Overlay) */}
+        <svg 
+          className="absolute inset-0 w-full h-full pointer-events-none z-20 transition-opacity duration-500"
+          viewBox="0 0 400 500"
+          preserveAspectRatio="none"
+          style={{ opacity: hovered ? 0.95 : 0.3 }}
+        >
+          <defs>
+            <linearGradient id="threadGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FF6B5A" stopOpacity="0.95" />
+              <stop offset="50%" stopColor="#FFFFFF" stopOpacity="0.85" />
+              <stop offset="100%" stopColor="#FF6B5A" stopOpacity="0.5" />
+            </linearGradient>
+            <linearGradient id="threadGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#FF6B5A" stopOpacity="0.95" />
+            </linearGradient>
+          </defs>
+
+          {/* Dynamic Thread Strand 1 */}
+          <path
+            d={`M -20,${110 + curveYOffset * 0.5} Q ${200 + curveOffset},${170 + curveYOffset} 420,${130 - curveYOffset * 0.3}`}
+            fill="none"
+            stroke="url(#threadGrad1)"
+            strokeWidth={hovered ? "3" : "1.5"}
+            strokeDasharray={hovered ? "10 6" : "none"}
+            className={hovered ? "animate-dash-scroll" : ""}
+            style={{ transition: 'd 0.15s ease-out' }}
+          />
+
+          {/* Dynamic Thread Strand 2 */}
+          <path
+            d={`M -20,${230 - curveYOffset * 0.4} Q ${180 - curveOffset * 0.8},${290 + curveYOffset * 1.2} 420,${250 + curveYOffset * 0.6}`}
+            fill="none"
+            stroke="url(#threadGrad2)"
+            strokeWidth={hovered ? "3.5" : "1.5"}
+            strokeDasharray={hovered ? "14 8" : "none"}
+            className={hovered ? "animate-thread-wiggle" : ""}
+            style={{ transition: 'd 0.15s ease-out' }}
+          />
+
+          {/* Dynamic Thread Strand 3 */}
+          <path
+            d={`M -20,${350 + curveYOffset * 0.3} Q ${220 + curveOffset * 1.1},${330 - curveYOffset * 0.7} 420,${390 + curveYOffset * 0.4}`}
+            fill="none"
+            stroke="url(#threadGrad1)"
+            strokeWidth={hovered ? "2.5" : "1"}
+            strokeDasharray={hovered ? "8 5" : "none"}
+            style={{ transition: 'd 0.15s ease-out' }}
+          />
+
+          {/* Interactive Sparkle Fiber Nodes */}
+          {hovered && (
+            <>
+              <circle cx={120 + curveOffset * 0.5} cy={160 + curveYOffset * 0.6} r="4.5" fill="#FF6B5A" className="animate-ping" />
+              <circle cx={280 - curveOffset * 0.4} cy={270 + curveYOffset * 0.8} r="5" fill="#FFF" className="animate-pulse" />
+              <circle cx={200 + curveOffset * 0.8} cy={340 - curveYOffset * 0.5} r="4" fill="#FF6B5A" />
+            </>
+          )}
+        </svg>
+
+        {/* Shimmer sweep effect */}
+        <div 
+          className="absolute inset-0 pointer-events-none transition-transform duration-700 bg-gradient-to-r from-transparent via-white/25 to-transparent -translate-x-full group-hover:translate-x-full z-30"
+        />
+      </div>
+
+      {/* Absolute overlay badge */}
+      <motion.div
+        variants={slideLeft}
+        className={`absolute -bottom-6 right-4 lg:right-8 glass-strong rounded-2xl shadow-float p-5 md:p-6 max-w-[250px] transition-all duration-300 z-40 ${
+          hovered ? 'scale-105 border-coral/50 shadow-coral/20 -translate-y-2' : ''
+        }`}
+      >
+        <div className="flex items-center justify-between gap-3">
+          <div className="text-2xl md:text-3xl font-bold text-heading tracking-tight font-serifHead">2022</div>
+          <div className={`p-2 rounded-xl bg-coral/10 text-coral transition-transform duration-700 ${hovered ? 'rotate-180 scale-110 bg-coral text-white' : ''}`}>
+            <Disc className="w-5 h-5 animate-spin-slow" />
+          </div>
+        </div>
+        <div className="text-[12px] text-text mt-1.5 font-semibold leading-relaxed">
+          Delivering cutting-edge yarn solutions globally since 2022
+        </div>
+      </motion.div>
+    </div>
+  )
+}
+
 export default function AboutSection() {
   const sectionRef = useRef(null)
   
@@ -70,7 +219,7 @@ export default function AboutSection() {
         <div className="container-editorial w-full px-4 md:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
             
-            {/* Left Column - Parallax Image & Highlight Badge */}
+            {/* Left Column - Interactive Image & Highlight Badge */}
             <motion.div 
               initial="hidden"
               whileInView="visible"
@@ -78,27 +227,7 @@ export default function AboutSection() {
               variants={rotateIn}
               className="lg:col-span-6 relative"
             >
-              <div className="relative rounded-3xl overflow-hidden shadow-lifted h-[320px] md:h-[450px] lg:h-[500px]">
-                <motion.div style={{ y: imageY }} className="h-full w-full">
-                  <img 
-                    src="/about_factory.png" 
-                    alt="ML Overseas premium factory tour view" 
-                    loading="lazy"
-                    className="w-full h-[120%] object-cover absolute -top-[10%]" 
-                  />
-                </motion.div>
-              </div>
-              
-              {/* Absolute overlay badge */}
-              <motion.div
-                variants={slideLeft}
-                className="absolute -bottom-6 right-4 lg:right-8 glass-strong rounded-2xl shadow-float p-6 max-w-[240px]"
-              >
-                <div className="text-2xl md:text-3xl font-semibold text-heading tracking-tight">2022</div>
-                <div className="text-[12px] text-text mt-1 font-semibold leading-normal">
-                  Delivering cutting-edge yarn solutions globally since 2022
-                </div>
-              </motion.div>
+              <InteractiveYarnCard imageY={imageY} />
             </motion.div>
 
             {/* Right Column - Who We Are Narrative */}

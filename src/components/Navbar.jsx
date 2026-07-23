@@ -6,7 +6,6 @@ import logoImg from '../assets/logo.png'
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [navScrolled, setNavScrolled] = useState(false)
-  const [mobileProductsOpen, setMobileProductsOpen] = useState(false)
   const location = useLocation()
 
   useEffect(() => {
@@ -52,7 +51,7 @@ export default function Navbar() {
           <Link
             to="/"
             data-hover
-            className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans px-4 py-2 rounded-full transition-all duration-300 ${location.pathname === '/' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/50'
+            className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans px-4 py-2 rounded-full transition-all duration-300 ${location.pathname === '/' && !location.hash ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/50'
               }`}
           >
             Home
@@ -74,12 +73,19 @@ export default function Navbar() {
             Products
           </Link>
           <Link
-            to="/contact-us"
+            to="/#process"
             data-hover
-            className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans px-4 py-2 rounded-full transition-all duration-300 ${location.pathname === '/contact-us' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/50'
+            onClick={(e) => {
+              if (location.pathname === '/') {
+                e.preventDefault()
+                const el = document.getElementById('process')
+                if (el) el.scrollIntoView({ behavior: 'smooth' })
+              }
+            }}
+            className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans px-4 py-2 rounded-full transition-all duration-300 ${location.hash === '#process' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/50'
               }`}
           >
-            Contact Us
+            Process
           </Link>
         </div>
 
@@ -90,7 +96,7 @@ export default function Navbar() {
             data-hover
             className="btn-primary text-[12px] py-2.5 px-6 rounded-full font-medium uppercase tracking-[0.15em] font-sans cursor-pointer transition-all duration-300 hover:shadow-soft"
           >
-            Get in Touch
+            Contact
           </Link>
         </div>
 
@@ -122,7 +128,7 @@ export default function Navbar() {
               <Link
                 to="/"
                 onClick={() => setMenuOpen(false)}
-                className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans py-3 px-4 rounded-2xl transition-all ${location.pathname === '/' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/40'
+                className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans py-3 px-4 rounded-2xl transition-all ${location.pathname === '/' && !location.hash ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/40'
                   }`}
               >
                 Home
@@ -144,12 +150,19 @@ export default function Navbar() {
                 Products
               </Link>
               <Link
-                to="/contact-us"
-                onClick={() => setMenuOpen(false)}
-                className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans py-3 px-4 rounded-2xl transition-all ${location.pathname === '/contact-us' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/40'
+                to="/#process"
+                onClick={(e) => {
+                  setMenuOpen(false)
+                  if (location.pathname === '/') {
+                    e.preventDefault()
+                    const el = document.getElementById('process')
+                    if (el) el.scrollIntoView({ behavior: 'smooth' })
+                  }
+                }}
+                className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans py-3 px-4 rounded-2xl transition-all ${location.hash === '#process' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/40'
                   }`}
               >
-                Contact Us
+                Process
               </Link>
 
               {/* Mobile CTA */}
@@ -159,7 +172,7 @@ export default function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className="w-full inline-flex items-center justify-center bg-navy hover:bg-coral text-white text-[12px] font-medium uppercase tracking-[0.15em] font-sans py-3.5 rounded-2xl transition-all"
                 >
-                  Get in Touch
+                  Contact
                 </Link>
               </div>
             </div>

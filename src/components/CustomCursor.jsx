@@ -9,11 +9,11 @@ export default function CustomCursor() {
     if (!dotRef.current || !ringRef.current) return
 
     // Position setters for instant translation with high-performance GSAP quickTo
-    const setDotX = gsap.quickTo(dotRef.current, "x", { duration: 0.08, ease: "power3" })
-    const setDotY = gsap.quickTo(dotRef.current, "y", { duration: 0.08, ease: "power3" })
+    const setDotX = gsap.quickTo(dotRef.current, "x", { duration: 0.06, ease: "power3" })
+    const setDotY = gsap.quickTo(dotRef.current, "y", { duration: 0.06, ease: "power3" })
     
-    const setRingX = gsap.quickTo(ringRef.current, "x", { duration: 0.35, ease: "power3" })
-    const setRingY = gsap.quickTo(ringRef.current, "y", { duration: 0.35, ease: "power3" })
+    const setRingX = gsap.quickTo(ringRef.current, "x", { duration: 0.09, ease: "power3" })
+    const setRingY = gsap.quickTo(ringRef.current, "y", { duration: 0.09, ease: "power3" })
 
     // Position centered
     gsap.set(dotRef.current, { xPercent: -50, yPercent: -50, x: window.innerWidth / 2, y: window.innerHeight / 2 })
