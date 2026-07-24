@@ -1,7 +1,55 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Phone, Mail, MapPin, ArrowUpRight } from 'lucide-react'
+import { motion } from 'framer-motion'
 import logoImg from '../../assets/logo.png'
+
+// Sequence order: OE Yarns(1) → Ring Spun(2) → PC Blends(3)
+const FOOTER_PRODUCTS = [
+  { seq: 1, label: 'Open End (OE) Yarns',     href: '/products' },
+  { seq: 2, label: 'Ring Spun Yarns',          href: '/products' },
+  { seq: 3, label: 'Polyester Cotton Blends',  href: '/products' },
+]
+
+function FooterProducts() {
+  return (
+    <div>
+      <motion.h4
+        className="text-[12px] font-bold text-[#0B1528] uppercase tracking-[0.18em] mb-5"
+        initial={{ opacity: 0, y: 8 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-40px' }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+      >
+        PRODUCTS
+      </motion.h4>
+      <ul className="space-y-3">
+        {FOOTER_PRODUCTS.map((product, i) => (
+          <motion.li
+            key={product.label}
+            custom={i}
+            initial={{ opacity: 0, x: -10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{
+              delay: i * 0.08,
+              duration: 0.38,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            <Link
+              to={product.href}
+              className="text-[14px] text-[#7A8293] hover:text-[#0B1528] transition-colors font-medium"
+              data-hover
+            >
+              {product.label}
+            </Link>
+          </motion.li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 export default function FooterSection() {
   return (
@@ -64,29 +112,8 @@ export default function FooterSection() {
             </ul>
           </div>
 
-          {/* Column 3: Products */}
-          <div>
-            <h4 className="text-[12px] font-bold text-[#0B1528] uppercase tracking-[0.18em] mb-5">
-              PRODUCTS
-            </h4>
-            <ul className="space-y-3">
-              {[
-                'Ring Spun Yarns',
-                'Open End (OE) Yarns',
-                'Polyester Cotton Blends',
-              ].map((l) => (
-                <li key={l}>
-                  <Link
-                    to="/products"
-                    className="text-[14px] text-[#7A8293] hover:text-[#0B1528] transition-colors font-medium"
-                    data-hover
-                  >
-                    {l}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Column 3: Products — staggered sequence animation */}
+          <FooterProducts />
 
           {/* Column 4: Stay Connected & Address details */}
           <div className="space-y-6">

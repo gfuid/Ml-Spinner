@@ -64,14 +64,10 @@ export default function Navbar() {
           >
             About Us
           </Link>
-          <Link
-            to="/products"
-            data-hover
-            className={`text-[12px] font-medium uppercase tracking-[0.15em] font-sans px-4 py-2 rounded-full transition-all duration-300 ${location.pathname === '/products' ? 'text-heading bg-cream/70 border border-border/30' : 'text-text hover:text-heading hover:bg-cream/50'
-              }`}
-          >
-            Products
-          </Link>
+
+          {/* Products Dropdown */}
+          <ProductsDropdown location={location} />
+
           <Link
             to="/#process"
             data-hover
@@ -180,5 +176,110 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </motion.nav>
+  )
+}
+
+/* ─── Products Dropdown Component ─── */
+const PRODUCTS = [
+  { seq: 2, label: 'Ring Spun Yarns',         path: '/products#ring-spun' },
+  { seq: 1, label: 'Open End (OE) Yarns',     path: '/products#oe-yarns'  },
+  { seq: 3, label: 'Polyester Cotton Blends', path: '/products#pc-blends' },
+]
+
+// Sort by sequence so they animate in order: 1 → 2 → 3
+const PRODUCTS_SORTED = [...PRODUCTS].sort((a, b) => a.seq - b.seq)
+
+const itemVariants = {
+  hidden: { opacity: 0, x: -12 },
+  visible: (i) => ({
+    opacity: 1,
+    x: 0,
+    transition: { delay: i * 0.08, duration: 0.35, ease: [0.16, 1, 0.3, 1] },
+  }),
+  exit: (i) => ({
+    opacity: 0,
+    x: -8,
+    transition: { delay: i * 0.04, duration: 0.2, ease: 'easeIn' },
+  }),
+}
+
+function ProductsDropdown({ location }) {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <div
+      className="relative"
+      onMouseEnter={() => setOpen(true)}
+      onMouseLeave={() => setOpen(false)}
+    >
+      {/* Trigger */}
+      <Link
+        to="/products"
+        data-hover
+        className={`flex items-center gap-1 text-[12px] font-medium uppercase tracking-[0.15em] font-sans px-4 py-2 rounded-full transition-all duration-300 ${
+          location.pathname === '/products'
+            ? 'text-heading bg-cream/70 border border-border/30'
+            : 'text-text hover:text-heading hover:bg-cream/50'
+        }`}
+      >
+        Products
+        {/* Animated chevron */}
+        <motion.svg
+          width="10" height="10" viewBox="0 0 10 10" fill="none"
+          animate={{ rotate: open ? 180 : 0 }}
+          transition={{ duration: 0.25 }}
+          className="ml-0.5 opacity-50"
+        >
+          <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+        </motion.svg>
+      </Link>
+
+      {/* Dropdown panel */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: 6, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 4, scale: 0.97 }}
+            transition={{ duration: 0.22, ease: 'easeOut' }}
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-56 bg-white/95 backdrop-blur-xl border border-border/30 rounded-2xl shadow-lifted overflow-hidden"
+          >
+            {/* Header label */}
+            <div className="px-4 pt-3 pb-1">
+              <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-muted">Products</p>
+            </div>
+
+            <div className="px-2 pb-2 flex flex-col gap-0.5">
+              {PRODUCTS_SORTED.map((product, i) => (
+                <motion.div
+                  key={product.label}
+                  custom={i}
+                  variants={itemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                >
+                  <Link
+                    to={product.path}
+                    data-hover
+                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-cream/60 transition-all duration-200 group"
+                  >
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.1em] text-text group-hover:text-heading transition-colors duration-200 font-sans">
+                      {product.label}
+                    </span>
+                    {/* Arrow reveal on hover */}
+                    <motion.span
+                      className="ml-auto text-coral opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-[10px]"
+                    >
+                      →
+                    </motion.span>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   )
 }
